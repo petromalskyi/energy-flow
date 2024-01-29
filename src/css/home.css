@@ -1,0 +1,211 @@
+.home-section {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    max-width: 365px;
+    padding-top: 60px;
+}
+
+.hero-design {
+    margin-bottom: 20px;
+    padding-bottom: 81px;
+    background-color: #fff;
+    border-radius: 30px;
+}
+
+.hero-title {
+    margin-bottom: 20px;
+    color: #1b1b1b;
+    font-size: 56px;
+    line-height: 0.9;
+    letter-spacing: -1.12px;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.hero-title-span {
+    color: #7e847f;
+    font-size: 56px;
+    font-style: italic;
+    line-height: 0.9;
+    letter-spacing: -1.12px;
+}
+
+.hero-popular-tags {
+    margin-bottom: 81px;
+    color: #1b1b1b;
+    font-size: 14px;
+    line-height: 1.29;
+    letter-spacing: -0.14px;
+}
+
+/* ///////////////////// */
+
+.quote-design {
+    width: 100%;
+    /* height: 272px; */
+    padding-top: 42px;
+    padding-bottom: 40px;
+    border-radius: 30px;
+    background: #7e847f;
+}
+
+.quote-box {
+    margin-bottom: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.quote-box-box {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.quote-title {
+    color: #f6f6f6;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.quote-text {
+    margin-bottom: 14px;
+    padding-left: 44px;
+    color: rgba(246, 246, 246, 0.6);
+    font-size: 14px;
+    line-height: 1.29;
+}
+
+.quote-author {
+    padding-left: 44px;
+    color: #f6f6f6;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.quote-img {
+    margin-bottom: 20px;
+    width: 100%;
+    /* width: 335px; */
+    height: 272px;
+    border-radius: 30px;
+
+    background-image: url(../img/rectangle-mobile-1x.png);
+    content: '';
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+@media (min-resolution: 192dpi) {
+    .quote-img {
+        background-image: url(../img/rectangle-mobile-2x.png);
+    }
+}
+
+/* ///////////////////// */
+.exercises-design {
+    width: 100%;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    border-radius: 30px;
+    background: #e8e8e8;
+}
+
+.exercises-title {
+    margin-bottom: 20px;
+    color: #1b1b1b;
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 32px;
+    letter-spacing: -0.64px;
+}
+
+.exercises-list-btn {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 40px;
+}
+
+.exercises-btn {
+    padding: 7px 14px;
+    border-radius: 30px;
+    border: none;
+    color: #1b1b1b;
+    font-size: 14px;
+    line-height: 1.29;
+    background-color: transparent;
+}
+
+.exercises-btn.active {
+    color: #f6f6f6;
+    background: #7e847f;
+}
+
+.js-exercises-list {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.exercises-image {
+    border-radius: 12px;
+    background: linear-gradient(0deg,
+            rgba(16, 16, 16, 0.7) 0%,
+            rgba(16, 16, 16, 0.7) 100%);
+}
+
+.exercises-link {
+    position: relative;
+}
+
+.div-position {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.exercises-filter {
+    color: #f6f6f6;
+    /* font-feature-settings: 'clig' off, 'liga' off; */
+    font-size: 20px;
+    line-height: 1;
+}
+
+.exercises-name {
+    color: rgba(246, 246, 246, 0.4);
+    text-align: center;
+    /* font-feature-settings: 'clig' off, 'liga' off; */
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.js-exercises-countpage {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+}
+
+.js-exercises-countpage-btn {
+    /* padding-left: 12px;
+  padding-right: 12px; */
+    width: 34px;
+    height: 34px;
+    color: rgba(27, 27, 27, 0.4);
+    font-family: inherit;
+    font-size: 20px;
+    line-height: 1.6;
+    letter-spacing: 0.8px;
+    border: none;
+    background-color: transparent;
+}
+
+.js-exercises-countpage-btn.active {
+    /* border-radius: 18px; */
+    border-radius: 50%;
+    border: 1px solid #1b1b1b;
+}

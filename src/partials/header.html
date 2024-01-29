@@ -1,13 +1,66 @@
-<header class="header">
-  <nav class="nav">
-    <ul class="nav-list">
-      <li class="nav-item">
-        <a href="./page-2.html" class="nav-link">Page 2</a>
-      </li>
+<header class="page-header">
+  <div class="container">
+    <div class="header-position">
+      <nav class="header-nav">
+        <a href="../index.html" class="header-logo">energy.flow</a>
+        <button class="header-menu-button js-open-menu" type="button">
+          <svg
+            class="icon"
+            width="32"
+            height="16"
+            aria-label="switch of mobile menu"
+          >
+            <use href="../img/symbol-defs.svg#icon-header-menu-icon"></use>
+          </svg>
+        </button>
+      </nav>
+      <div class="header-box">
+        <p class="header-box-text">#Sport</p>
+        <p class="header-box-text">#Healthy</p>
+        <p class="header-box-text">#Workout</p>
+        <p class="header-box-text">#Diet</p>
+      </div>
+    </div>
+  </div>
 
-      <li class="nav-item">
-        <a href="./page-3.html" class="nav-link">Page 3</a>
-      </li>
-    </ul>
-  </nav>
+  <!-- МОДАЛЬНЕ ВІКНО -->
+  <div class="header-backdrop is-hidden">
+    <div class="container header-modal">
+      <div class="modal-position">
+        <a href="../index.html" class="header-logo inverse">energy.flow</a>
+
+        <button type="button" class="header-menu-button">
+          <svg class="button-modal-icon" width="20" height="20">
+            <use href="../img/symbol-defs.svg#icon-x"></use>
+          </svg>
+        </button>
+      </div>
+
+      <div class="header-modal-menu">
+        <a href="../index.html" class="header-modal-menu-btn active">Home</a>
+        <a href="#" class="header-modal-menu-btn">Favorites</a>
+      </div>
+
+      <ul class="social-links">
+        <li class="social-item">
+          <a href="https://www.facebook.com/goITclub/" target="_blank">
+            <svg class="button-modal-icon" width="25" height="25">
+              <use href="../img/symbol-defs.svg#icon-facebook"></use></svg
+          ></a>
+        </li>
+        <li class="social-item">
+          <a href=" https://www.youtube.com/c/GoIT" target="_blank">
+            <svg class="button-modal-icon" width="25" height="25">
+              <use href="../img/symbol-defs.svg#icon-youtube"></use></svg
+          ></a>
+        </li>
+        <li class="social-item">
+          <a href="https://www.instagram.com/goitclub/" target="_blank">
+            <svg class="button-modal-icon" width="25" height="25">
+              <use href="../img/symbol-defs.svg#icon-instagram"></use></svg
+          ></a>
+        </li>
+      </ul>
+    </div>
+  </div>
 </header>
