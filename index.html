@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/modern-normalize@2.0.0/modern-normalize.min.css"
+    />
+    
+    <title>EnergyFlow</title>
+    <script type="module" crossorigin src="/energy-flow/commonHelpers.js"></script>
+    <link rel="modulepreload" crossorigin href="/energy-flow/assets/vendor-1b0a9daf.js">
+    <link rel="stylesheet" href="/energy-flow/assets/index-7409734b.css">
+  </head>
+  <body>
+    <header class="page-header">
+  <div class="container">
+    <div class="header-position">
+      <nav class="header-nav">
+        <a href="../index.html" class="header-logo">energy.flow</a>
+        <button class="header-menu-button js-open-menu" type="button">
+          <svg
+            class="icon"
+            width="32"
+            height="16"
+            aria-label="switch of mobile menu"
+          >
+            <use href="../img/symbol-defs.svg#icon-header-menu-icon"></use>
+          </svg>
+        </button>
+      </nav>
+      <div class="header-box">
+        <p class="header-box-text">#Sport</p>
+        <p class="header-box-text">#Healthy</p>
+        <p class="header-box-text">#Workout</p>
+        <p class="header-box-text">#Diet</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- МОДАЛЬНЕ ВІКНО -->
+  <div class="header-backdrop is-hidden">
+    <div class="container header-modal">
+      <div class="modal-position">
+        <a href="../index.html" class="header-logo inverse">energy.flow</a>
+
+        <button type="button" class="header-menu-button">
+          <svg class="button-modal-icon" width="20" height="20">
+            <use href="../img/symbol-defs.svg#icon-x"></use>
+          </svg>
+        </button>
+      </div>
+
+      <div class="header-modal-menu">
+        <a href="../index.html" class="header-modal-menu-btn active">Home</a>
+        <a href="#" class="header-modal-menu-btn">Favorites</a>
+      </div>
+
+      <ul class="social-links">
+        <li class="social-item">
+          <a href="https://www.facebook.com/goITclub/" target="_blank">
+            <svg class="button-modal-icon" width="25" height="25">
+              <use href="../img/symbol-defs.svg#icon-facebook"></use></svg
+          ></a>
+        </li>
+        <li class="social-item">
+          <a href=" https://www.youtube.com/c/GoIT" target="_blank">
+            <svg class="button-modal-icon" width="25" height="25">
+              <use href="../img/symbol-defs.svg#icon-youtube"></use></svg
+          ></a>
+        </li>
+        <li class="social-item">
+          <a href="https://www.instagram.com/goitclub/" target="_blank">
+            <svg class="button-modal-icon" width="25" height="25">
+              <use href="../img/symbol-defs.svg#icon-instagram"></use></svg
+          ></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>
+ <section class="home-section">
+  <div class="hero-design container">
+    <h1 class="hero-title">
+      Get <span class="hero-title-span">Body</span> in shape, Stay healthy
+    </h1>
+    <p class="hero-popular-tags">
+      Transform your physique and embrace a healthier lifestyle with our
+      comprehensive fitness and nutrition support.
+    </p>
+  </div>
+
+  <div class="quote-design container">
+    <div class="quote-box">
+      <div class="quote-box-box">
+        <svg class="icon" width="34" height="32" aria-label="running man">
+          <use href="../img/symbol-defs.svg#icon-icon"></use>
+        </svg>
+        <h2 class="quote-title">Quote of the day</h2>
+      </div>
+      <svg class="icon" width="28" height="28" aria-label="inverted-commas">
+        <use href="../img/symbol-defs.svg#icon-inverted-commas"></use>
+      </svg>
+    </div>
+    <p class="quote-text"></p>
+    <p class="quote-author"></p>
+  </div>
+
+  <div class="quote-img container"></div>
+
+  <div class="exercises-design container">
+    <h2 class="exercises-title">Exercises</h2>
+    <ul class="exercises-list-btn">
+      <li>
+        <button
+          class="exercises-btn active"
+          type="button"
+          data-action="filter=Muscles"
+        >
+          Muscles
+        </button>
+      </li>
+      <li>
+        <button
+          class="exercises-btn"
+          type="button"
+          data-action="filter=Body parts"
+        >
+          Body parts
+        </button>
+      </li>
+      <li>
+        <button
+          class="exercises-btn"
+          type="button"
+          data-action="filter=Equipment"
+        >
+          Equipment
+        </button>
+      </li>
+    </ul>
+
+    <ul class="js-exercises-list"></ul>
+    <div class="js-exercises-countpage"></div>
+  </div>
+</section>
+
+
+    <!-- <script src="./main.js" type="module"></script> -->
+
+    
+    <!-- <script src="./js/home.js" type="module"></script> -->
+    
+  </body>
+</html>
