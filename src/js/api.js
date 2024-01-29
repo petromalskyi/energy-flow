@@ -2,11 +2,16 @@ import axios from 'axios';
 
 // export let choiceFilter = 'filter=Muscles';
 // import { handleClick } from './home';
+
 //import { choiceFilter } from './home';
 
+// let currentPage = 1;
+// let choiceFilter = 'filter=Muscles';
+
+///////////////////////home.js
 let choiceFilter = 'filter=Muscles';
 let currentPage = 1;
-///////////////////////home.js
+
 const btnFiltersEl = document.querySelector('.exercises-list-btn');
 const btnMusclesEl = document.querySelector(
   'button[data-action="filter=Muscles"]',
@@ -26,17 +31,19 @@ function handleClick(event) {
   btnEquipmentEl.classList.remove('active');
 
   event.target.classList.add('active');
+
   choiceFilter = event.target.dataset.action;
 
   currentPage = 1;
-  //getFilters();
+  // return choiceFilter, currentPage;
+  getFilters(choiceFilter, currentPage);
 }
 
 //////////////////////
 
 const amountPageEl = document.querySelector('.js-exercises-countpage');
 
-function onChangeActivePage() {}
+// function onChangeActivePage() {}
 
 // console.log(choiceFilter);
 const quoteTextEl = document.querySelector('.quote-text');
@@ -82,60 +89,60 @@ getQuote();
 const listEl = document.querySelector('.js-exercises-list');
 
 ////////////////////////////
+// getFilters(choiceFilter, currentPage);
+getFilters();
 
-// async function getFilters() {
-//   axios.defaults.baseURL = 'https://energyflow.b.goit.study/api/';
-//   const resource = 'filters';
-//   const params = {
-//     page: currentPage,
-//     limit: 8,
-//   };
+async function getFilters(choiceFilter = 'filter=Muscles', currentPage = 1) {
+  axios.defaults.baseURL = 'https://energyflow.b.goit.study/api/';
+  const resource = 'filters';
+  const params = {
+    page: currentPage,
+    limit: 8,
+  };
 
-//   let markup = '';
-//   const response = await axios.get(
-//     // `https://energyflow.b.goit.study/api/filters?${choiceFilter}&page=1&limit=8`,
-//     `${resource}?${choiceFilter}`,
-//     { params },
-//   );
+  let markup = '';
+  const response = await axios.get(`${resource}?${choiceFilter}`, { params });
 
-//   try {
-//     // console.log(response.data);
-//     const amountPage = response.data.totalPages;
-//     ////////////// Кількість сторінок
-//     if (amountPage > 1) {
-//       let amountPageMarkup = '';
+  try {
+    // console.log(response.data);
+    const amountPage = response.data.totalPages;
 
-//       for (let i = 1; i <= amountPage; i += 1) {
-//         if (i === currentPage) {
-//           amountPageMarkup += `<button data-action=${i} class="js-exercises-countpage-btn active " type="button">${i}</button>`;
-//         } else {
-//           amountPageMarkup += `
-//           <button data-action=${i} class="js-exercises-countpage-btn " type="button">${i}</button>
-//         `;
-//         }
-//       }
-//       amountPageEl.innerHTML = amountPageMarkup;
+    ////////////// Кількість сторінок
+    if (amountPage > 1) {
+      let amountPageMarkup = '';
 
-//       amountPageEl.addEventListener('click', onClick);
+      for (let i = 1; i <= amountPage; i += 1) {
+        if (i === currentPage) {
+          amountPageMarkup += `<button data-action=${i} class="js-exercises-countpage-btn active " type="button">${i}</button>`;
+        } else {
+          amountPageMarkup += `
+          <button data-action=${i} class="js-exercises-countpage-btn " type="button">${i}</button>
+        `;
+        }
+      }
 
-//       function onClick(event) {
-//         for (const el of amountPageEl.children) {
-//           el.classList.remove('active');
-//         }
+      amountPageEl.innerHTML = amountPageMarkup;
 
-//         event.target.classList.add('active');
-//         currentPage = Number(event.target.dataset.action);
-//         getFilters();
-//       }
-//     }
+      amountPageEl.addEventListener('click', onClick);
+    }
 
-//     createMarkup(response.data.results);
-//   } catch (error) {
-//     alert(error.message);
-//   }
-// }
+    createMarkup(response.data.results);
+  } catch (error) {
+    alert(error.message);
+  }
+}
 
 // getFilters();
+
+function onClick(event) {
+  for (const el of amountPageEl.children) {
+    el.classList.remove('active');
+  }
+
+  event.target.classList.add('active');
+  currentPage = Number(event.target.dataset.action);
+  getFilters(choiceFilter, currentPage);
+}
 
 function createMarkup(array) {
   //   console.log(array);

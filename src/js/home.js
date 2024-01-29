@@ -1,9 +1,12 @@
-//import { getFilters } from './api';
-// export let choiceFilter = 'filter=Muscles';
+import { getFilters } from './api';
+
 //import { choiceFilter } from './api';
 // console.log('home', choiceFilter);
 
+//export let choiceFilter = 'filter=Muscles';
+
 let choiceFilter = 'filter=Muscles';
+let currentPage = 1;
 
 const btnFiltersEl = document.querySelector('.exercises-list-btn');
 const btnMusclesEl = document.querySelector(
@@ -18,14 +21,16 @@ const btnEquipmentEl = document.querySelector(
 
 btnFiltersEl.addEventListener('click', handleClick);
 
-export function handleClick(event) {
+function handleClick(event) {
   btnMusclesEl.classList.remove('active');
   btnBodyEl.classList.remove('active');
   btnEquipmentEl.classList.remove('active');
 
   event.target.classList.add('active');
+
   choiceFilter = event.target.dataset.action;
 
   currentPage = 1;
-  // getFilters();
+  // return choiceFilter, currentPage;
+  getFilters(choiceFilter, currentPage);
 }
