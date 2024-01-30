@@ -42,51 +42,11 @@ function handleClick(event) {
 //////////////////////
 
 const amountPageEl = document.querySelector('.js-exercises-countpage');
+const listEl = document.querySelector('.js-exercises-list');
 
 // function onChangeActivePage() {}
 
 // console.log(choiceFilter);
-const quoteTextEl = document.querySelector('.quote-text');
-const quoteAuthorEl = document.querySelector('.quote-author');
-
-async function getQuote() {
-  axios.defaults.baseURL = 'https://energyflow.b.goit.study/api/quote';
-
-  const date = new Date();
-  const currentDate =
-    date.getFullYear() + String(date.getMonth()) + date.getDate();
-
-  let objLocalStorage = {};
-  if (localStorage.getItem('quotation')) {
-    objLocalStorage = JSON.parse(localStorage.getItem('quotation'));
-  }
-
-  if (
-    !localStorage.getItem('quotation') ||
-    currentDate !== objLocalStorage.date
-  ) {
-    const response = await axios.get();
-    try {
-      quoteTextEl.textContent = response.data.quote;
-      quoteAuthorEl.textContent = response.data.author;
-      const settings = {
-        date: currentDate,
-        quote: response.data.quote,
-        author: response.data.author,
-      };
-      localStorage.setItem('quotation', JSON.stringify(settings));
-    } catch (error) {
-      alert(error.message);
-    }
-  } else {
-    quoteTextEl.textContent = objLocalStorage.quote;
-    quoteAuthorEl.textContent = objLocalStorage.author;
-  }
-}
-
-getQuote();
-
-const listEl = document.querySelector('.js-exercises-list');
 
 ////////////////////////////
 // getFilters(choiceFilter, currentPage);
@@ -100,7 +60,8 @@ async function getFilters(choiceFilter = 'filter=Muscles', currentPage = 1) {
     limit: 8,
   };
 
-  let markup = '';
+  // let markup = '';
+
   const response = await axios.get(`${resource}?${choiceFilter}`, { params });
 
   try {
@@ -123,7 +84,7 @@ async function getFilters(choiceFilter = 'filter=Muscles', currentPage = 1) {
 
       amountPageEl.innerHTML = amountPageMarkup;
 
-      amountPageEl.addEventListener('click', onClick);
+      amountPageEl.addEventListener('click', onChangeActivePage);
     }
 
     createMarkup(response.data.results);
@@ -134,7 +95,7 @@ async function getFilters(choiceFilter = 'filter=Muscles', currentPage = 1) {
 
 // getFilters();
 
-function onClick(event) {
+function onChangeActivePage(event) {
   for (const el of amountPageEl.children) {
     el.classList.remove('active');
   }
@@ -145,11 +106,14 @@ function onClick(event) {
 }
 
 function createMarkup(array) {
-  //   console.log(array);
-  const markup = array.reduce(
-    (html, { name, filter, imgUrl }) =>
-      html +
-      `
+  console.log(array.length);
+
+  let markup = '';
+  if (array.length > 0) {
+    markup = array.reduce(
+      (html, { name, filter, imgUrl }) =>
+        html +
+        `
       <li class="exercises-item">
         <a class="exercises-link" href="">
             <img
@@ -163,8 +127,19 @@ function createMarkup(array) {
             </div>
          </a>
        </li>`,
-    '',
-  );
+      '',
+    );
+  } else {
+    markup = `<li class="exercises-item">
+      <p class="message-undefined">
+        Unfortunately, no results were found.You may want to consider other
+        search options to find the exercise you are looking for.Our range is
+        wide and you have the opportunity to find more options that suit your
+        needs.
+      </p>
+    </li>`;
+  }
+
   //   listEl.insertAdjacentHTML('beforeend', markup);
   listEl.innerHTML = markup;
 }
