@@ -106,8 +106,6 @@ function onChangeActivePage(event) {
 }
 
 function createMarkup(array) {
-  console.log(array.length);
-
   let markup = '';
   if (array.length > 0) {
     markup = array.reduce(
