@@ -66,6 +66,7 @@ async function getFilters(choiceFilter = 'filter=Muscles', currentPage = 1) {
 
   try {
     // console.log(response.data);
+    // console.log(response);
     const amountPage = response.data.totalPages;
 
     ////////////// Кількість сторінок
