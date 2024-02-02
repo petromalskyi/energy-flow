@@ -14,13 +14,17 @@
   <div class="quote-img container"></div>
 
   <div class="exercises-design container">
-    <h2 class="exercises-title">Exercises</h2>
-    <ul class="exercises-list-btn">
+    <div class="exercises-flex">
+      <h2 class="js-exercises-title">Exercises</h2>
+      <p class="js-exercises-text"></p>
+    </div>
+    <ul class="js-exercises-list-btn">
       <li>
         <button
           class="exercises-btn active"
           type="button"
           data-action="filter=Muscles"
+          data-filter="muscles"
         >
           Muscles
         </button>
@@ -30,6 +34,7 @@
           class="exercises-btn"
           type="button"
           data-action="filter=Body parts"
+          data-filter="bodypart"
         >
           Body parts
         </button>
@@ -39,11 +44,71 @@
           class="exercises-btn"
           type="button"
           data-action="filter=Equipment"
+          data-filter="equipment"
         >
           Equipment
         </button>
       </li>
     </ul>
+
+    <!-- <div class="second-position">
+      <input
+        type="text"
+        name="search"
+        class="js-second-input"
+        placeholder="Search"
+      />
+      <svg class="second-input-svg" width="18" height="18">
+        <use
+          class="second-input-svg"
+          href="/img/symbol-defs.svg#icon-search"
+        ></use>
+      </svg>
+    </div> -->
+
+    <!-- <li class="second-item">
+        <div class="second-position-one">
+          <div class="second-flex">
+            <p class="second-workout">WORKOUT</p>
+            <div class="second-flex-one">
+              <p class="second-star">4.0</p>
+              <svg width="18" height="18">
+                <use href="/img/symbol-defs.svg#icon-star"></use>
+              </svg>
+            </div>
+          </div>
+          <button type="button" class="second-btn">
+            Start
+            <svg class="second-arrow-icon" width="14" height="14">
+              <use
+                class="second-arrow-icon"
+                href="/img/symbol-defs.svg#icon-arrow"
+              ></use>
+            </svg>
+          </button>
+        </div>
+        <div class="second-position-two">
+          <svg width="24" height="24">
+            <use href="/img/symbol-defs.svg#icon-running-man"></use>
+          </svg>
+          <p class="second-title">Air bike</p>
+        </div>
+
+        <div class="second-position-three">
+          <div>
+            <p class="second-text">Burned calories:</p>
+            <p class="second-entrance">312 / 3 min</p>
+          </div>
+          <div>
+            <p class="second-text">Body part:</p>
+            <p class="second-entrance">Waist</p>
+          </div>
+          <div>
+            <p class="second-text">Target:</p>
+            <p class="second-entrance">Abs</p>
+          </div>
+        </div>
+      </li> -->
 
     <ul class="js-exercises-list"></ul>
     <div class="js-exercises-countpage"></div>

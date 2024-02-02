@@ -9,7 +9,7 @@ import axios from 'axios';
 // let choiceFilter = 'filter=Muscles';
 // let currentPage = 1;
 
-// const btnFiltersEl = document.querySelector('.exercises-list-btn');
+// const btnFiltersEl = document.querySelector('.js-exercises-list-btn');
 // const btnMusclesEl = document.querySelector(
 //   'button[data-action="filter=Muscles"]',
 // );
@@ -20,9 +20,9 @@ import axios from 'axios';
 //   'button[data-action="filter=Equipment"]',
 // );
 
-// btnFiltersEl.addEventListener('click', handleClick);
+// btnFiltersEl.addEventListener('click', onChangeFilter);
 
-// function handleClick(event) {
+// function onChangeFilter(event) {
 //   btnMusclesEl.classList.remove('active');
 //   btnBodyEl.classList.remove('active');
 //   btnEquipmentEl.classList.remove('active');
