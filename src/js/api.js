@@ -15,6 +15,7 @@ let currentPage = 1;
 let currentPageSecond = 1;
 let amountPageSecond = 1;
 let arraySend = [];
+let nameQuery = '';
 
 const btnFiltersEl = document.querySelector('.js-exercises-list-btn');
 const btnMusclesEl = document.querySelector(
@@ -51,7 +52,9 @@ function onChangeFilter(event) {
 //////////////////////
 
 const amountPageEl = document.querySelector('.js-exercises-countpage');
-
+const amountPageSecondEl = document.querySelector(
+  '.js-exercises-second-countpage',
+);
 ////////////////////////////
 // getFilters(choiceFilter, currentPage);
 getFilters();
@@ -75,6 +78,7 @@ async function getFilters(choiceFilter = 'filter=Muscles', currentPage = 1) {
 
     ////////////// Кількість сторінок
     amountPageEl.innerHTML = '';
+    amountPageSecondEl.innerHTML = '';
     if (amountPage > 1) {
       let amountPageMarkup = '';
 
@@ -103,16 +107,17 @@ async function getFilters(choiceFilter = 'filter=Muscles', currentPage = 1) {
 //////////////////
 
 const listEl = document.querySelector('.js-exercises-list');
-console.log(listEl);
+console.log('listEl', listEl);
 
 listEl.addEventListener('click', onClickExercises);
-let nameQuery = '';
+
 function onClickExercises(event) {
   event.preventDefault();
   // console.log(event.target);
   // console.log(event.target.dataset.filter);
   // console.log(event.target.dataset.name);
   nameQuery = event.target.dataset.name;
+  console.log('nameQuery', nameQuery);
   exercisesTitleEl.textContent = `Exercises / `;
   let nameQueryFirstUpper = nameQuery[0].toUpperCase() + nameQuery.slice(1);
   exercisesTextEl.textContent = `${nameQueryFirstUpper}`;
@@ -152,6 +157,7 @@ async function getExercises() {
     arraySend = responses.data.results;
     console.log('amountPageSecond', amountPageSecond);
     amountPageEl.innerHTML = '';
+    amountPageSecondEl.innerHTML = '';
     if (amountPageSecond > 1) {
       let amountPageMarkup = '';
 
@@ -165,9 +171,9 @@ async function getExercises() {
         }
       }
 
-      amountPageEl.innerHTML = amountPageMarkup;
+      amountPageSecondEl.innerHTML = amountPageMarkup;
 
-      amountPageEl.addEventListener('click', onChangeActivePageSecond);
+      amountPageSecondEl.addEventListener('click', onChangeActivePageSecond);
     }
     console.log('arraySend', arraySend);
     // createMarkupExercisesSecond(responses.data.results);
@@ -175,17 +181,6 @@ async function getExercises() {
   } catch (error) {
     console.log(error);
   }
-}
-
-function onChangeActivePageSecond(event) {
-  for (const el of amountPageEl.children) {
-    el.classList.remove('active');
-  }
-
-  event.target.classList.add('active');
-  currentPageSecond = Number(event.target.dataset.action);
-  console.log('currentPageSecond', currentPageSecond);
-  getExercises();
 }
 
 function onChangeActivePage(event) {
@@ -196,4 +191,20 @@ function onChangeActivePage(event) {
   event.target.classList.add('active');
   currentPage = Number(event.target.dataset.action);
   getFilters(choiceFilter, currentPage);
+}
+
+function onChangeActivePageSecond(event) {
+  const amountPageSecondEl = document.querySelector(
+    '.js-exercises-second-countpage',
+  );
+  console.log(amountPageSecondEl);
+
+  for (const el of amountPageSecondEl.children) {
+    el.classList.remove('active');
+  }
+
+  event.target.classList.add('active');
+  currentPageSecond = Number(event.target.dataset.action);
+  console.log('currentPageSecond', currentPageSecond);
+  getExercises();
 }

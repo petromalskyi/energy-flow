@@ -327,6 +327,10 @@
   align-items: center;
 }
 
+.second-icon-man {
+  flex-shrink: 0;
+}
+
 .second-title {
   color: #1b1b1b;
   /* font-feature-settings: 'clig' off, 'liga' off; */

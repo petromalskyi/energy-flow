@@ -76,7 +76,7 @@ export function createMarkupExercisesSecond(array) {
           </button>
         </div>
         <div class="second-position-two">
-          <svg width="24" height="24">
+          <svg class="second-icon-man" width="24" height="24">
             <use href="${icons}#icon-running-man"></use>
           </svg>
           <p class="second-title">${name}</p>
