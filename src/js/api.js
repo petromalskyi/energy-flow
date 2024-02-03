@@ -12,6 +12,9 @@ import { createMarkupExercisesSecond } from './markup';
 ///////////////////////home.js
 let choiceFilter = 'filter=Muscles';
 let currentPage = 1;
+let currentPageSecond = 1;
+let amountPageSecond = 1;
+let arraySend = [];
 
 const btnFiltersEl = document.querySelector('.js-exercises-list-btn');
 const btnMusclesEl = document.querySelector(
@@ -60,6 +63,9 @@ async function getFilters(choiceFilter = 'filter=Muscles', currentPage = 1) {
     page: currentPage,
     limit: 8,
   };
+
+  currentPageSecond = 1;
+  amountPageSecond = 1;
 
   let response = await axios.get(`${resource}?${choiceFilter}`, { params });
   try {
@@ -112,8 +118,7 @@ function onClickExercises(event) {
   exercisesTextEl.textContent = `${nameQueryFirstUpper}`;
   getExercises();
 }
-let currentPageSecond = 1;
-let amountPageSecond = 1;
+
 async function getExercises() {
   // axios.defaults.baseURL = 'https://energyflow.b.goit.study/api/';
   let resource = 'exercises';
@@ -130,7 +135,7 @@ async function getExercises() {
   console.log('nameQuery', nameQuery);
   const query = `${resource}?${filter}=${nameQuery}&page=${currentPageSecond}&limit=8`;
   console.log('query', query);
-  let response = await axios.get(query);
+  let responses = await axios.get(query);
 
   // const responses = await axios.get(resource, {
   //   params,
@@ -143,8 +148,9 @@ async function getExercises() {
     // console.dir(response);
     // console.dir(response.data);
     // console.dir(response.data.results);
-    amountPageSecond = response.data.totalPages;
-    console.log(amountPageSecond);
+    amountPageSecond = responses.data.totalPages;
+    arraySend = responses.data.results;
+    console.log('amountPageSecond', amountPageSecond);
     amountPageEl.innerHTML = '';
     if (amountPageSecond > 1) {
       let amountPageMarkup = '';
@@ -163,8 +169,9 @@ async function getExercises() {
 
       amountPageEl.addEventListener('click', onChangeActivePageSecond);
     }
-
-    createMarkupExercisesSecond(response.data.results);
+    console.log('arraySend', arraySend);
+    // createMarkupExercisesSecond(responses.data.results);
+    createMarkupExercisesSecond(arraySend);
   } catch (error) {
     console.log(error);
   }
@@ -180,30 +187,6 @@ function onChangeActivePageSecond(event) {
   console.log('currentPageSecond', currentPageSecond);
   getExercises();
 }
-
-//       } catch (error) {
-//         console.log(error);
-//       }
-//  }
-//   getExercises();
-//   try {
-//     // console.log(response.data);
-//     console.dir(resp.data);
-//     //const amountPage = response.data.totalPages;
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
-
-////////////////////////////
-////////////////
-
-//   } catch (error) {
-//     alert(error.message);
-//   }
-// }
-
-// getFilters();
 
 function onChangeActivePage(event) {
   for (const el of amountPageEl.children) {

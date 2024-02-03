@@ -49,11 +49,11 @@ export function createMarkupExercisesSecond(array) {
   //     <a class="exercises-link"  href=""></a>
   // <use href="/img/symbol-defs.svg#icon-star"></use>;
 
-  if (array.length > 0) {
-    markup = array.reduce(
-      (html, { rating, name, burnedCalories, bodyPart, target }) =>
-        html +
-        `
+  // if (array.length > 0) {
+  markup = array.reduce(
+    (html, { rating, name, burnedCalories, bodyPart, target }) =>
+      html +
+      `
         <li class="second-item">
         <div class="second-position-one">
           <div class="second-flex">
@@ -70,14 +70,14 @@ export function createMarkupExercisesSecond(array) {
             <svg class="second-arrow-icon" width="14" height="14">
               <use
                 class="second-arrow-icon"
-                href="/img/symbol-defs.svg#icon-arrow"
+                href="${icons}#icon-arrow"
               ></use>
             </svg>
           </button>
         </div>
         <div class="second-position-two">
           <svg width="24" height="24">
-            <use href="/img/symbol-defs.svg#icon-running-man"></use>
+            <use href="${icons}#icon-running-man"></use>
           </svg>
           <p class="second-title">${name}</p>
         </div>
@@ -98,18 +98,18 @@ export function createMarkupExercisesSecond(array) {
         </div>
       </li>
    `,
-      '',
-    );
-  } else {
-    markup = `<li class="exercises-item">
-      <p class="message-undefined">
-        Unfortunately, no results were found.You may want to consider other
-        search options to find the exercise you are looking for.Our range is
-        wide and you have the opportunity to find more options that suit your
-        needs.
-      </p>
-    </li>`;
-  }
+    '',
+  );
+  // } else {
+  //   markup = `<li class="exercises-item">
+  //     <p class="message-undefined">
+  //       Unfortunately, no results were found.You may want to consider other
+  //       search options to find the exercise you are looking for.Our range is
+  //       wide and you have the opportunity to find more options that suit your
+  //       needs.
+  //     </p>
+  //   </li>`;
+  // }
 
   //   listEl.insertAdjacentHTML('beforeend', markup);
   listEl.innerHTML = markup;
