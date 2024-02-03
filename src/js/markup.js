@@ -1,3 +1,5 @@
+import icons from '../img/symbol-defs.svg';
+
 const listEl = document.querySelector('.js-exercises-list');
 
 export function createMarkupExercises(array) {
@@ -45,6 +47,8 @@ export function createMarkupExercises(array) {
 export function createMarkupExercisesSecond(array) {
   let markup = '';
   //     <a class="exercises-link"  href=""></a>
+  // <use href="/img/symbol-defs.svg#icon-star"></use>;
+
   if (array.length > 0) {
     markup = array.reduce(
       (html, { rating, name, burnedCalories, bodyPart, target }) =>
@@ -57,7 +61,7 @@ export function createMarkupExercisesSecond(array) {
             <div class="second-flex-one">
               <p class="second-star">${rating}</p>
               <svg width="18" height="18">
-                <use href="/img/symbol-defs.svg#icon-star"></use>
+                <use href="${icons}#icon-star"></use>
               </svg>
             </div>
           </div>

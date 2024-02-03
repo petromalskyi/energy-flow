@@ -118,7 +118,7 @@
   margin-bottom: 20px;
   display: flex;
   gap: 8px;
-  align-items:end;
+  align-items: end;
 }
 
 .js-exercises-title {
@@ -132,7 +132,6 @@
 /* .js-exercises-span {
   color: #7e847f;
 } */
-
 
 .js-exercises-text {
   color: rgba(27, 27, 27, 0.5);
@@ -216,7 +215,7 @@
 }
 
 .js-exercises-countpage-btn {
-   width: 34px;
+  width: 34px;
   height: 34px;
   color: rgba(27, 27, 27, 0.4);
   font-family: inherit;
@@ -234,6 +233,8 @@
 }
 
 .message-undefined {
+  padding-top: 100px;
+  padding-bottom: 100px;
   text-align: center;
   color: #1b1b1b;
   font-size: 14px;
@@ -244,31 +245,30 @@
 /* SECOND */
 
 .second-position {
-    position: relative;
-    width: 100%;
+  position: relative;
+  width: 100%;
 }
 .js-second-input {
-    margin-bottom: 40px;
-    width: 100%;
-    padding: 12px 14px;
-    border-radius: 30px;
-    background: #F6F6F6;
-    border: none;
-    color: #1B1B1B;
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 1.29;
+  margin-bottom: 40px;
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 30px;
+  background: #f6f6f6;
+  border: none;
+  color: #1b1b1b;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.29;
 }
-.second-input-svg{
-    position: absolute;
-    top: 13px;
-    right: 15px;
-    /* fill: #fff; */
+.second-input-svg {
+  position: absolute;
+  top: 13px;
+  right: 15px;
+  /* fill: #fff; */
 }
-
 
 .second-item {
-    padding: 16px;
+  padding: 16px;
   border-radius: 15px;
   background: #fff;
 }
@@ -280,9 +280,9 @@
   align-items: center;
 }
 .second-flex {
-    display: flex;
-    gap: 16px;
-    align-items: center;
+  display: flex;
+  gap: 16px;
+  align-items: center;
 }
 .second-workout {
   width: 76px;
@@ -297,7 +297,10 @@
 
 .second-flex-one {
   display: flex;
+  gap: 2px;
+  align-items: center;
 }
+
 .second-btn {
   position: relative;
   padding-left: 0;
@@ -362,8 +365,9 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-
-  @media (min-resolution: 192dpi) {
+}
+@media (min-resolution: 192dpi) {
+  .min110-img {
     background-image: url(../img/rectangle-42208-2x.png);
   }
 }
