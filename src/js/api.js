@@ -1,6 +1,8 @@
 import axios from 'axios';
 import { createMarkupExercises } from './markup';
 import { createMarkupExercisesSecond } from './markup';
+import { createMarkupExercisesId } from './markup';
+
 // export let choiceFilter = 'filter=Muscles';
 // import { handleClick } from './home';
 
@@ -10,11 +12,11 @@ import { createMarkupExercisesSecond } from './markup';
 // let choiceFilter = 'filter=Muscles';
 
 ///////////////////////home.js
+let response = '';
 let choiceFilter = 'filter=Muscles';
 let currentPage = 1;
 let currentPageSecond = 1;
 let amountPageSecond = 1;
-let arraySend = [];
 let nameQuery = '';
 
 const btnFiltersEl = document.querySelector('.js-exercises-list-btn');
@@ -29,10 +31,12 @@ const btnEquipmentEl = document.querySelector(
 );
 const exercisesTitleEl = document.querySelector('.js-exercises-title');
 const exercisesTextEl = document.querySelector('.js-exercises-text');
+const listEl = document.querySelector('.js-exercises-list');
+// console.log('listEl', listEl);
 
 let filter = 'muscles';
 btnFiltersEl.addEventListener('click', onChangeFilter);
-//  filter = 'muscles';
+
 function onChangeFilter(event) {
   btnMusclesEl.classList.remove('active');
   btnBodyEl.classList.remove('active');
@@ -48,17 +52,16 @@ function onChangeFilter(event) {
   // return choiceFilter, currentPage;
   getFilters(choiceFilter, currentPage);
 }
-
 //////////////////////
 
 const amountPageEl = document.querySelector('.js-exercises-countpage');
 const amountPageSecondEl = document.querySelector(
   '.js-exercises-second-countpage',
 );
-////////////////////////////
-// getFilters(choiceFilter, currentPage);
+
 getFilters();
 
+/////////////////////////////////////////////////////////
 async function getFilters(choiceFilter = 'filter=Muscles', currentPage = 1) {
   axios.defaults.baseURL = 'https://energyflow.b.goit.study/api/';
   let resource = 'filters';
@@ -66,14 +69,14 @@ async function getFilters(choiceFilter = 'filter=Muscles', currentPage = 1) {
     page: currentPage,
     limit: 8,
   };
+  listEl.removeEventListener('click', onClickBtnSecond);
+  listEl.addEventListener('click', onClickExercises);
 
   currentPageSecond = 1;
   amountPageSecond = 1;
 
-  let response = await axios.get(`${resource}?${choiceFilter}`, { params });
+  response = await axios.get(`${resource}?${choiceFilter}`, { params });
   try {
-    // console.log(response.data);
-    // console.log(response);
     let amountPage = response.data.totalPages;
 
     ////////////// Кількість сторінок
@@ -103,58 +106,28 @@ async function getFilters(choiceFilter = 'filter=Muscles', currentPage = 1) {
   }
 }
 
-///////////////
-//////////////////
-
-const listEl = document.querySelector('.js-exercises-list');
-console.log('listEl', listEl);
-
-listEl.addEventListener('click', onClickExercises);
-
 function onClickExercises(event) {
   event.preventDefault();
-  // console.log(event.target);
-  // console.log(event.target.dataset.filter);
-  // console.log(event.target.dataset.name);
   nameQuery = event.target.dataset.name;
-  console.log('nameQuery', nameQuery);
   exercisesTitleEl.textContent = `Exercises / `;
   let nameQueryFirstUpper = nameQuery[0].toUpperCase() + nameQuery.slice(1);
   exercisesTextEl.textContent = `${nameQueryFirstUpper}`;
   getExercises();
 }
 
+////////////////////////////////////////////////////
+////////////////////////////////////////////////////
 async function getExercises() {
   // axios.defaults.baseURL = 'https://energyflow.b.goit.study/api/';
   let resource = 'exercises';
-  // params = {
-  //   param: `${filter}=${nameQuery}`,
-  //   page: 1,
-  //   limit: 8,
-  // };
-  // console.log(choiceFilter);
-  // console.log('resource=', resource);
-  // console.log('params.param=', params.param);
-  // console.log('params', params);
-  console.log('filter=', filter);
-  console.log('nameQuery', nameQuery);
+  listEl.removeEventListener('click', onClickExercises);
+
   const query = `${resource}?${filter}=${nameQuery}&page=${currentPageSecond}&limit=8`;
-  console.log('query', query);
-  let responses = await axios.get(query);
 
-  // const responses = await axios.get(resource, {
-  //   params,
-  // });
+  response = await axios.get(query);
 
-  //    exercises?bodypart=back&muscles=lats&equipment=barbell&keyword=pull&page=1&limit=10
-  // responses = await axios.get('exercises?bodypart=neck&page=1&limit=10');
   try {
-    // console.log(response.data);
-    // console.dir(response);
-    // console.dir(response.data);
-    // console.dir(response.data.results);
-    amountPageSecond = responses.data.totalPages;
-    arraySend = responses.data.results;
+    amountPageSecond = response.data.totalPages;
     console.log('amountPageSecond', amountPageSecond);
     amountPageEl.innerHTML = '';
     amountPageSecondEl.innerHTML = '';
@@ -170,16 +143,91 @@ async function getExercises() {
         `;
         }
       }
-
       amountPageSecondEl.innerHTML = amountPageMarkup;
-
       amountPageSecondEl.addEventListener('click', onChangeActivePageSecond);
     }
-    console.log('arraySend', arraySend);
-    // createMarkupExercisesSecond(responses.data.results);
-    createMarkupExercisesSecond(arraySend);
+
+    createMarkupExercisesSecond(response.data.results);
+
+    listEl.addEventListener('click', onClickBtnSecond);
   } catch (error) {
-    console.log(error);
+    alert(error.message);
+  }
+}
+
+function onClickBtnSecond(event) {
+  const idExercise = event.target.dataset.id;
+  if (!idExercise) {
+    return;
+  }
+
+  console.log(idExercise);
+
+  getExercisesID(idExercise);
+}
+
+////////////////////////////////////
+///////////////////////////////////
+////////////////////////////////////////
+
+async function getExercisesID(idExercise) {
+  let resource = 'exercises';
+  const query = `${resource}/${idExercise}`;
+  response = await axios.get(query);
+
+  try {
+    console.dir(response.data);
+
+    const modalImgEl = document.querySelector('.id-modal-img');
+    console.log(modalImgEl);
+    modalImgEl.setAttribute('src', `${response.data.gifUrl}`);
+    const modalTitleEl = document.querySelector('.id-modal-title');
+    modalTitleEl.textContent = `${response.data.name}`;
+    const modalRatingEl = document.querySelector('.rating-item');
+    modalRatingEl.textContent = `${response.data.rating}`;
+    const modalTargetEl = document.querySelector('[data-action="target"]');
+    modalTargetEl.textContent = `${response.data.target}`;
+    const modalWaistEl = document.querySelector('[data-action="waist"]');
+    modalWaistEl.textContent = `${response.data.bodyPart}`;
+    const modalEquipmentEl = document.querySelector(
+      '[data-action="equipment"]',
+    );
+    modalEquipmentEl.textContent = `${response.data.equipment}`;
+    const modalPopularEl = document.querySelector('[data-action="popular"]');
+    modalPopularEl.textContent = `${response.data.popularity}`;
+    const modalCaloriesEl = document.querySelector(
+      '[data-action="burnedcalories"]',
+    );
+    modalCaloriesEl.textContent = `${response.data.burnedCalories} / ${response.data.time}`;
+    const modalDescriptionEl = document.querySelector(
+      '[data-action="description"]',
+    );
+    modalDescriptionEl.textContent = `${response.data.description}`;
+
+    const countYellowStar = Math.floor(response.data.rating);
+    console.log(countYellowStar);
+    const starsEl = document.querySelectorAll('.rating-icon');
+    console.log(starsEl);
+    for (let i = 0; i < countYellowStar; i++) {
+      const el = starsEl[i];
+      starsEl[i].setAttribute('href', '/img/symbol-defs.svg#icon-star');
+    }
+
+    const buttonOpenModalIdEl = document.querySelector('.js-second-btn');
+    const backdropIdEl = document.querySelector('.js-backdrop-id');
+    const buttonCloseModalIdEl = document.querySelector(
+      '.js-id-modal-btn-close',
+    );
+
+    // buttonOpenModalIdEl.addEventListener('click', () => {
+    backdropIdEl.classList.toggle('is-hidden');
+    // });
+
+    buttonCloseModalIdEl.addEventListener('click', () =>
+      backdropIdEl.classList.toggle('is-hidden'),
+    );
+  } catch (error) {
+    alert(error.message);
   }
 }
 

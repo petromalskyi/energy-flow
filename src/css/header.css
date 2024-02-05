@@ -68,7 +68,8 @@
   border: 1px solid rgba(246, 246, 246, 0.3);
 }
 
-/* МОДАЛЬНЕ ВІКНО */
+/* МОДАЛЬНЕ ВІКНО ////////////////// */
+
 .header-backdrop {
   position: fixed;
   z-index: 1;
@@ -81,15 +82,15 @@
   transition: opacity 250ms ease, visibility 250ms ease;
 }
 
-.is-hidden {
+/* .is-hidden {
   opacity: 0;
   pointer-events: none;
   transform: translate(-100%, -100%);
-}
+} */
 
 .header-modal {
   min-height: 100vh;
-  padding: 30px 20px 40px;
+  padding: 40px 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

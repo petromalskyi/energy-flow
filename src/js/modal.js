@@ -4,6 +4,7 @@ const backdropEl = document.querySelector('.header-backdrop');
 
 buttonOpenModalEl.addEventListener('click', openModal);
 buttonCloseModalEl.addEventListener('click', openModal);
+
 // document.addEventListener('keydown', onEscapePress);
 
 function openModal() {

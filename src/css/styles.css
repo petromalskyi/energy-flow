@@ -13,7 +13,7 @@ body {
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
-  /* color: #242424; */
-  /* background-color: rgba(255, 255, 255, 0.87); */
+ padding-top: 20px;
+ padding-bottom: 20px;
   background-color: #F6F6F6;
 }

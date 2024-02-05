@@ -40,20 +40,19 @@ export function createMarkupExercises(array) {
     </li>`;
   }
 
-  //   listEl.insertAdjacentHTML('beforeend', markup);
   listEl.innerHTML = markup;
+
+  // export const buttonOpenModalIdEl = document.querySelector('.js-second-btn');
 }
 
 export function createMarkupExercisesSecond(array) {
   let markup = '';
-  //     <a class="exercises-link"  href=""></a>
-  // <use href="/img/symbol-defs.svg#icon-star"></use>;
 
-  // if (array.length > 0) {
-  markup = array.reduce(
-    (html, { rating, name, burnedCalories, bodyPart, target }) =>
-      html +
-      `
+  if (array.length > 0) {
+    markup = array.reduce(
+      (html, { rating, name, burnedCalories, bodyPart, target, _id }) =>
+        html +
+        `
         <li class="second-item">
         <div class="second-position-one">
           <div class="second-flex">
@@ -65,7 +64,7 @@ export function createMarkupExercisesSecond(array) {
               </svg>
             </div>
           </div>
-          <button type="button" class="second-btn">
+          <button type="button" class="js-second-btn" data-id=${_id}>
             Start
             <svg class="second-arrow-icon" width="14" height="14">
               <use
@@ -98,19 +97,22 @@ export function createMarkupExercisesSecond(array) {
         </div>
       </li>
    `,
-    '',
-  );
-  // } else {
-  //   markup = `<li class="exercises-item">
-  //     <p class="message-undefined">
-  //       Unfortunately, no results were found.You may want to consider other
-  //       search options to find the exercise you are looking for.Our range is
-  //       wide and you have the opportunity to find more options that suit your
-  //       needs.
-  //     </p>
-  //   </li>`;
-  // }
+      '',
+    );
+  } else {
+    markup = `<li class="exercises-item">
+      <p class="message-undefined">
+        Unfortunately, no results were found.You may want to consider other
+        search options to find the exercise you are looking for.Our range is
+        wide and you have the opportunity to find more options that suit your
+        needs.
+      </p>
+    </li>`;
+  }
 
-  //   listEl.insertAdjacentHTML('beforeend', markup);
   listEl.innerHTML = markup;
+}
+
+export function createMarkupExercisesId(obj) {
+  let markup = '';
 }
