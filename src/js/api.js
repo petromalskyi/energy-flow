@@ -2,6 +2,7 @@ import axios from 'axios';
 import { createMarkupExercises } from './markup';
 import { createMarkupExercisesSecond } from './markup';
 import { createMarkupExercisesId } from './markup';
+import icons from '../img/symbol-defs.svg';
 
 // export let choiceFilter = 'filter=Muscles';
 // import { handleClick } from './home';
