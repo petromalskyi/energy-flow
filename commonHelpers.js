@@ -1,74 +1,81 @@
-import{a as l}from"./assets/vendor-1b0a9daf.js";(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))o(e);new MutationObserver(e=>{for(const n of e)if(n.type==="childList")for(const c of n.addedNodes)c.tagName==="LINK"&&c.rel==="modulepreload"&&o(c)}).observe(document,{childList:!0,subtree:!0});function a(e){const n={};return e.integrity&&(n.integrity=e.integrity),e.referrerpolicy&&(n.referrerPolicy=e.referrerpolicy),e.crossorigin==="use-credentials"?n.credentials="include":e.crossorigin==="anonymous"?n.credentials="omit":n.credentials="same-origin",n}function o(e){if(e.ep)return;e.ep=!0;const n=a(e);fetch(e.href,n)}})();const j=document.querySelector(".js-open-modal"),C=document.querySelector(".js-close-modal"),T=document.querySelector(".header-backdrop");j.addEventListener("click",q);C.addEventListener("click",q);function q(){T.classList.toggle("is-hidden")}const b=document.querySelector(".quote-text"),S=document.querySelector(".quote-author");async function O(){l.defaults.baseURL="https://energyflow.b.goit.study/api/quote";const s=new Date,t=s.getFullYear()+String(s.getMonth())+s.getDate();let a={};if(localStorage.getItem("quotation")&&(a=JSON.parse(localStorage.getItem("quotation"))),!localStorage.getItem("quotation")||t!==a.date){const o=await l.get();try{b.textContent=o.data.quote,S.textContent=o.data.author;const e={date:t,quote:o.data.quote,author:o.data.author};localStorage.setItem("quotation",JSON.stringify(e))}catch(e){alert(e.message)}}else b.textContent=a.quote,S.textContent=a.author}O();const f="/energy-flow/assets/symbol-defs-e6683987.svg",$=document.querySelector(".js-exercises-list");function H(s){let t="";s.length>0?t=s.reduce((a,{name:o,filter:e,imgUrl:n})=>a+`
+import{a as i}from"./assets/vendor-1b0a9daf.js";(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const t of document.querySelectorAll('link[rel="modulepreload"]'))s(t);new MutationObserver(t=>{for(const a of t)if(a.type==="childList")for(const r of a.addedNodes)r.tagName==="LINK"&&r.rel==="modulepreload"&&s(r)}).observe(document,{childList:!0,subtree:!0});function n(t){const a={};return t.integrity&&(a.integrity=t.integrity),t.referrerpolicy&&(a.referrerPolicy=t.referrerpolicy),t.crossorigin==="use-credentials"?a.credentials="include":t.crossorigin==="anonymous"?a.credentials="omit":a.credentials="same-origin",a}function s(t){if(t.ep)return;t.ep=!0;const a=n(t);fetch(t.href,a)}})();const B=document.querySelector(".js-open-modal"),R=document.querySelector(".js-close-modal"),Y=document.querySelector(".header-backdrop");B.addEventListener("click",C);R.addEventListener("click",C);function C(){Y.classList.toggle("is-hidden")}const L=document.querySelector(".quote-text"),w=document.querySelector(".quote-author");async function z(){i.defaults.baseURL="https://energyflow.b.goit.study/api/quote";const o=new Date,e=o.getFullYear()+String(o.getMonth())+o.getDate();let n={};if(localStorage.getItem("quotation")&&(n=JSON.parse(localStorage.getItem("quotation"))),!localStorage.getItem("quotation")||e!==n.date){const s=await i.get();try{L.textContent=s.data.quote,w.textContent=s.data.author;const t={date:e,quote:s.data.quote,author:s.data.author};localStorage.setItem("quotation",JSON.stringify(t))}catch(t){alert(t.message)}}else L.textContent=n.quote,w.textContent=n.author}z();const v="/energy-flow/assets/symbol-defs-430dada7.svg",M=document.querySelector(".js-exercises-list");function Q(o){let e="";o.length>0?e=o.reduce((n,{name:s,filter:t,imgUrl:a})=>n+`
       <li class="exercises-item">
       <a class="exercises-link"  href="">
             <img
             class="exercises-image"
-            src="${n}"
-            alt="${o}"
-            data-filter='${e}' 
-            data-name='${o}'
+            src="${a}"
+            alt="${s}"
+            data-filter='${t}' 
+            data-name='${s}'
             />
             <div class="div-position">
-                <p class="exercises-filter" data-filter='${e}' 
-            data-name='${o}'>${e}</p>
-                <p class="exercises-name" data-filter='${e}' 
-            data-name='${o}'>${o}</p>
+                <p class="exercises-filter" data-filter='${t}' 
+            data-name='${s}'>${t}</p>
+                <p class="exercises-name" data-filter='${t}' 
+            data-name='${s}'>${s}</p>
             </div>
             </a>
-       </li>`,""):t=`<li class="exercises-item">
+       </li>`,""):e=`<li class="exercises-item">
       <p class="message-undefined">
         Unfortunately, no results were found.You may want to consider other
         search options to find the exercise you are looking for.Our range is
         wide and you have the opportunity to find more options that suit your
         needs.
       </p>
-    </li>`,$.innerHTML=t}function F(s){let t="";t=s.reduce((a,{rating:o,name:e,burnedCalories:n,bodyPart:c,target:r})=>a+`
+    </li>`,M.innerHTML=e}function J(o){let e="";o.length>0?e=o.reduce((n,{rating:s,name:t,burnedCalories:a,bodyPart:r,target:x,_id:h})=>n+`
         <li class="second-item">
         <div class="second-position-one">
           <div class="second-flex">
             <p class="second-workout">WORKOUT</p>
             <div class="second-flex-one">
-              <p class="second-star">${o}</p>
+              <p class="second-star">${s}</p>
               <svg width="18" height="18">
-                <use href="${f}#icon-star"></use>
+                <use href="${v}#icon-star"></use>
               </svg>
             </div>
           </div>
-          <button type="button" class="second-btn">
+          <button type="button" class="js-second-btn" data-id=${h}>
             Start
             <svg class="second-arrow-icon" width="14" height="14">
               <use
                 class="second-arrow-icon"
-                href="${f}#icon-arrow"
+                href="${v}#icon-arrow"
               ></use>
             </svg>
           </button>
         </div>
         <div class="second-position-two">
           <svg class="second-icon-man" width="24" height="24">
-            <use href="${f}#icon-running-man"></use>
+            <use href="${v}#icon-running-man"></use>
           </svg>
-          <p class="second-title">${e}</p>
+          <p class="second-title">${t}</p>
         </div>
 
         <div class="second-position-three">
           <div>
             <p class="second-text">Burned calories:</p>
-            <p class="second-entrance">${n} / 3 min</p>
+            <p class="second-entrance">${a} / 3 min</p>
           </div>
           <div>
             <p class="second-text">Body part:</p>
-            <p class="second-entrance">${c}</p>
+            <p class="second-entrance">${r}</p>
           </div>
           <div>
             <p class="second-text">Target:</p>
-            <p class="second-entrance">${r}</p>
+            <p class="second-entrance">${x}</p>
           </div>
         </div>
       </li>
-   `,""),$.innerHTML=t}let v="filter=Muscles",m=1,g=1,u=1,y=[],i="";const N=document.querySelector(".js-exercises-list-btn"),U=document.querySelector('button[data-action="filter=Muscles"]'),D=document.querySelector('button[data-action="filter=Body parts"]'),I=document.querySelector('button[data-action="filter=Equipment"]'),L=document.querySelector(".js-exercises-title"),w=document.querySelector(".js-exercises-text");let h="muscles";N.addEventListener("click",Q);function Q(s){U.classList.remove("active"),D.classList.remove("active"),I.classList.remove("active"),s.target.classList.add("active"),v=s.target.dataset.action,h=s.target.dataset.filter,m=1,L.textContent="Exercises",w.textContent="",x(v,m)}const d=document.querySelector(".js-exercises-countpage"),p=document.querySelector(".js-exercises-second-countpage");x();async function x(s="filter=Muscles",t=1){l.defaults.baseURL="https://energyflow.b.goit.study/api/";let a="filters",o={page:t,limit:8};g=1,u=1;let e=await l.get(`${a}?${s}`,{params:o});try{let n=e.data.totalPages;if(d.innerHTML="",p.innerHTML="",n>1){let c="";for(let r=1;r<=n;r+=1)r===t?c+=`<button data-action=${r} class="js-exercises-countpage-btn active " type="button">${r}</button>`:c+=`
+   `,""):e=`<li class="exercises-item">
+      <p class="message-undefined">
+        Unfortunately, no results were found.You may want to consider other
+        search options to find the exercise you are looking for.Our range is
+        wide and you have the opportunity to find more options that suit your
+        needs.
+      </p>
+    </li>`,M.innerHTML=e}let c="",E="filter=Muscles",f=1,u=1,l=1,g="";const K=document.querySelector(".js-exercises-list-btn"),W=document.querySelector('button[data-action="filter=Muscles"]'),G=document.querySelector('button[data-action="filter=Body parts"]'),V=document.querySelector('button[data-action="filter=Equipment"]'),j=document.querySelector(".js-exercises-title"),P=document.querySelector(".js-exercises-text"),y=document.querySelector(".js-exercises-list");let T="muscles";K.addEventListener("click",X);function X(o){W.classList.remove("active"),G.classList.remove("active"),V.classList.remove("active"),o.target.classList.add("active"),E=o.target.dataset.action,T=o.target.dataset.filter,f=1,j.textContent="Exercises",P.textContent="",S(E,f)}const d=document.querySelector(".js-exercises-countpage"),p=document.querySelector(".js-exercises-second-countpage");S();async function S(o="filter=Muscles",e=1){i.defaults.baseURL="https://energyflow.b.goit.study/api/";let n="filters",s={page:e,limit:8};y.removeEventListener("click",H),y.addEventListener("click",O),u=1,l=1,c=await i.get(`${n}?${o}`,{params:s});try{let t=c.data.totalPages;if(d.innerHTML="",p.innerHTML="",t>1){let a="";for(let r=1;r<=t;r+=1)r===e?a+=`<button data-action=${r} class="js-exercises-countpage-btn active " type="button">${r}</button>`:a+=`
           <button data-action=${r} class="js-exercises-countpage-btn " type="button">${r}</button>
-        `;d.innerHTML=c,d.addEventListener("click",B)}H(e.data.results)}catch(n){alert(n.message)}}const M=document.querySelector(".js-exercises-list");console.log("listEl",M);M.addEventListener("click",A);function A(s){s.preventDefault(),i=s.target.dataset.name,console.log("nameQuery",i),L.textContent="Exercises / ";let t=i[0].toUpperCase()+i.slice(1);w.textContent=`${t}`,k()}async function k(){let s="exercises";console.log("filter=",h),console.log("nameQuery",i);const t=`${s}?${h}=${i}&page=${g}&limit=8`;console.log("query",t);let a=await l.get(t);try{if(u=a.data.totalPages,y=a.data.results,console.log("amountPageSecond",u),d.innerHTML="",p.innerHTML="",u>1){let o="";for(let e=1;e<=u;e+=1)e===g?o+=`<button data-action=${e} class="js-exercises-countpage-btn active " type="button">${e}</button>`:o+=`
-          <button data-action=${e} class="js-exercises-countpage-btn " type="button">${e}</button>
-        `;p.innerHTML=o,p.addEventListener("click",R)}console.log("arraySend",y),F(y)}catch(o){console.log(o)}}function B(s){for(const t of d.children)t.classList.remove("active");s.target.classList.add("active"),m=Number(s.target.dataset.action),x(v,m)}function R(s){const t=document.querySelector(".js-exercises-second-countpage");console.log(t);for(const a of t.children)a.classList.remove("active");s.target.classList.add("active"),g=Number(s.target.dataset.action),console.log("currentPageSecond",g),k()}const P=document.querySelector(".js-footer-form");P.addEventListener("submit",z);let E=new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");function z(s){s.preventDefault();let t=s.target.elements.email.value.trim();if(console.log(E.test(t)),E.test(t)){if(t===""){alert("please, enter your email");return}const a={email:t};async function o(){try{const e=await l.post("subscription",a);alert(e.data.message),P.reset()}catch{alert("Subscription already exists")}}o()}}
+        `;d.innerHTML=a,d.addEventListener("click",_)}Q(c.data.results)}catch(t){alert(t.message)}}function O(o){o.preventDefault(),g=o.target.dataset.name,j.textContent="Exercises / ";let e=g[0].toUpperCase()+g.slice(1);P.textContent=`${e}`,I()}async function I(){let o="exercises";y.removeEventListener("click",O);const e=`${o}?${T}=${g}&page=${u}&limit=8`;c=await i.get(e);try{if(l=c.data.totalPages,console.log("amountPageSecond",l),d.innerHTML="",p.innerHTML="",l>1){let n="";for(let s=1;s<=l;s+=1)s===u?n+=`<button data-action=${s} class="js-exercises-countpage-btn active " type="button">${s}</button>`:n+=`
+          <button data-action=${s} class="js-exercises-countpage-btn " type="button">${s}</button>
+        `;p.innerHTML=n,p.addEventListener("click",ee)}J(c.data.results),y.addEventListener("click",H)}catch(n){alert(n.message)}}function H(o){const e=o.target.dataset.id;e&&(console.log(e),Z(e))}async function Z(o){const n=`exercises/${o}`;c=await i.get(n);try{console.dir(c.data);const s=document.querySelector(".id-modal-img");console.log(s),s.setAttribute("src",`${c.data.gifUrl}`);const t=document.querySelector(".id-modal-title");t.textContent=`${c.data.name}`;const a=document.querySelector(".rating-item");a.textContent=`${c.data.rating}`;const r=document.querySelector('[data-action="target"]');r.textContent=`${c.data.target}`;const x=document.querySelector('[data-action="waist"]');x.textContent=`${c.data.bodyPart}`;const h=document.querySelector('[data-action="equipment"]');h.textContent=`${c.data.equipment}`;const A=document.querySelector('[data-action="popular"]');A.textContent=`${c.data.popularity}`;const D=document.querySelector('[data-action="burnedcalories"]');D.textContent=`${c.data.burnedCalories} / ${c.data.time}`;const F=document.querySelector('[data-action="description"]');F.textContent=`${c.data.description}`;const q=Math.floor(c.data.rating);console.log(q);const b=document.querySelectorAll(".rating-icon");console.log(b);for(let m=0;m<q;m++){const se=b[m];b[m].setAttribute("href","/img/symbol-defs.svg#icon-star")}const oe=document.querySelector(".js-second-btn"),$=document.querySelector(".js-backdrop-id"),N=document.querySelector(".js-id-modal-btn-close");$.classList.toggle("is-hidden"),N.addEventListener("click",()=>$.classList.toggle("is-hidden"))}catch(s){alert(s.message)}}function _(o){for(const e of d.children)e.classList.remove("active");o.target.classList.add("active"),f=Number(o.target.dataset.action),S(E,f)}function ee(o){const e=document.querySelector(".js-exercises-second-countpage");console.log(e);for(const n of e.children)n.classList.remove("active");o.target.classList.add("active"),u=Number(o.target.dataset.action),console.log("currentPageSecond",u),I()}const U=document.querySelector(".js-footer-form");U.addEventListener("submit",te);let k=new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");function te(o){o.preventDefault();let e=o.target.elements.email.value.trim();if(console.log(k.test(e)),k.test(e)){if(e===""){alert("please, enter your email");return}const n={email:e};async function s(){try{const t=await i.post("subscription",n);alert(t.data.message),U.reset()}catch{alert("Subscription already exists")}}s()}}
 //# sourceMappingURL=commonHelpers.js.map
