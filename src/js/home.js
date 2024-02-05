@@ -43,7 +43,7 @@ import axios from 'axios';
 const quoteTextEl = document.querySelector('.quote-text');
 const quoteAuthorEl = document.querySelector('.quote-author');
 
-async function getQuote() {
+export async function getQuote() {
   axios.defaults.baseURL = 'https://energyflow.b.goit.study/api/quote';
 
   const date = new Date();

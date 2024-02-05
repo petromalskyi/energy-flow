@@ -1,7 +1,53 @@
 //import { createMarkupFavorites } from './markup';
 import icons from '../img/symbol-defs.svg';
 
+import { getQuote } from '../js/home';
+
 const favoriteListEl = document.querySelector('.js-favorite-list');
+// const quoteTextEl = document.querySelector('.quote-text');
+// const quoteAuthorEl = document.querySelector('.quote-author');
+
+///////////////////
+
+const quoteTextEl = document.querySelector('.quote-text');
+const quoteAuthorEl = document.querySelector('.quote-author');
+
+// export async function getQuote() {
+//   axios.defaults.baseURL = 'https://energyflow.b.goit.study/api/quote';
+
+//   const date = new Date();
+//   const currentDate =
+//     date.getFullYear() + String(date.getMonth()) + date.getDate();
+
+//   let objLocalStorage = {};
+//   if (localStorage.getItem('quotation')) {
+//     objLocalStorage = JSON.parse(localStorage.getItem('quotation'));
+//   }
+
+//   if (
+//     !localStorage.getItem('quotation') ||
+//     currentDate !== objLocalStorage.date
+//   ) {
+//     const response = await axios.get();
+//     try {
+//       quoteTextEl.textContent = response.data.quote;
+//       quoteAuthorEl.textContent = response.data.author;
+//       const settings = {
+//         date: currentDate,
+//         quote: response.data.quote,
+//         author: response.data.author,
+//       };
+//       localStorage.setItem('quotation', JSON.stringify(settings));
+//     } catch (error) {
+//       alert(error.message);
+//     }
+//   } else {
+//     quoteTextEl.textContent = objLocalStorage.quote;
+//     quoteAuthorEl.textContent = objLocalStorage.author;
+//   }
+// }
+
+getQuote();
 
 createMarkupFavorites();
 
