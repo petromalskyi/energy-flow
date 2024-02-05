@@ -209,11 +209,11 @@ async function getExercisesID(idExercise) {
     console.log(countYellowStar);
     const starsEl = document.querySelectorAll('.rating-icon');
     console.log(starsEl);
-    for (let i = 0; i < countYellowStar; i++) {
+    for (let i = countYellowStar; i < starsEl.length; i++) {
       const el = starsEl[i];
-      starsEl[i].setAttribute('href', '/img/symbol-defs.svg#icon-star');
+      starsEl[i].setAttribute('href', '/img/symbol-defs.svg#icon-star-passive');
     }
-
+    //  href = '/img/symbol-defs.svg#icon-star';
     const buttonOpenModalIdEl = document.querySelector('.js-second-btn');
     const backdropIdEl = document.querySelector('.js-backdrop-id');
     const buttonCloseModalIdEl = document.querySelector(
