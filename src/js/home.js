@@ -1,4 +1,8 @@
 import axios from 'axios';
+
+// const buttonAddFavoritesEl = document.querySelector('.id-button-add-favorites');
+// console.log(buttonAddFavoritesEl);
+
 // import { getFilters } from './api';
 
 // //import { choiceFilter } from './api';

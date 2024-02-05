@@ -113,6 +113,6 @@ export function createMarkupExercisesSecond(array) {
   listEl.innerHTML = markup;
 }
 
-export function createMarkupExercisesId(obj) {
-  let markup = '';
-}
+// export function createMarkupExercisesId(obj) {
+//   let markup = '';
+// }

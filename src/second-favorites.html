@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/modern-normalize@2.0.0/modern-normalize.min.css"
+    />
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/favorit.css" />
+
+    <title>Favorites</title>
+  </head>
+  <body>
+    <!-- <load ="/partials/header.html" /> -->
+
+    <div class="container">
+      <div class="header-position">
+        <nav class="header-nav">
+          <a href="./index.html" class="header-logo">energy.flow</a>
+          <button class="js-open-modal" type="button">
+            <svg width="32" height="16" aria-label="switch of mobile menu">
+              <use href="/img/symbol-defs.svg#icon-header-menu-icon"></use>
+            </svg>
+          </button>
+        </nav>
+      </div>
+    </div>
+
+    <load ="/partials/quote.html" />
+    <load ="/partials/min110.html" />
+    <load ="/partials/header-modal.html" />
+    <section class="favorites-section container">
+      <h2 class="favorites-title">Favorites</h2>
+
+      <ul class="js-favorite-list">
+        <!-- <li class="second-item">
+          <div class="second-position-one">
+            <div class="second-flex">
+              <p class="second-workout">WORKOUT</p>
+              <div class="second-flex-one">
+                <svg width="16" height="16">
+                  <use href="${icons}#icon-trash"></use>
+                </svg>
+              </div>
+            </div>
+            <button type="button" class="js-second-btn" data-id="${_id}">
+              Start
+              <svg class="second-arrow-icon" width="14" height="14">
+                <use class="second-arrow-icon" href="${icons}#icon-arrow"></use>
+              </svg>
+            </button>
+          </div>
+          <div class="second-position-two">
+            <svg class="second-icon-man" width="24" height="24">
+              <use href="${icons}#icon-running-man"></use>
+            </svg>
+            <p class="second-title">Name</p>
+          </div>
+
+          <div class="second-position-three">
+            <div>
+              <p class="second-text">Burned calories:</p>
+              <p class="second-entrance">Calories / 3 min</p>
+            </div>
+            <div>
+              <p class="second-text">Body part:</p>
+              <p class="second-entrance">Body part</p>
+            </div>
+            <div>
+              <p class="second-text">Target:</p>
+              <p class="second-entrance">Target</p>
+            </div>
+          </div>
+        </li> -->
+      </ul>
+    </section>
+    <!-- <script src="./main.js" type="module"></script> -->
+    <script type="module" src="./js/favorite.js"></script>
+  </body>
+</html>

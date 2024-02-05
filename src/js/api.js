@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { createMarkupExercises } from './markup';
 import { createMarkupExercisesSecond } from './markup';
-import { createMarkupExercisesId } from './markup';
-import icons from '../img/symbol-defs.svg';
+// import { createMarkupExercisesId } from './markup';
+// import icons from '../img/symbol-defs.svg';
 
 // export let choiceFilter = 'filter=Muscles';
 // import { handleClick } from './home';
@@ -206,9 +206,9 @@ async function getExercisesID(idExercise) {
     modalDescriptionEl.textContent = `${response.data.description}`;
 
     const countYellowStar = Math.floor(response.data.rating);
-    console.log(countYellowStar);
+    // console.log(countYellowStar);
     const starsEl = document.querySelectorAll('.rating-icon');
-    console.log(starsEl);
+    // console.log(starsEl);
     for (let i = countYellowStar; i < starsEl.length; i++) {
       const el = starsEl[i];
       starsEl[i].setAttribute('href', '/img/symbol-defs.svg#icon-star-passive');
@@ -227,6 +227,36 @@ async function getExercisesID(idExercise) {
     buttonCloseModalIdEl.addEventListener('click', () =>
       backdropIdEl.classList.toggle('is-hidden'),
     );
+
+    ////////////////////////
+    const buttonAddFavoritesEl = document.querySelector(
+      '.id-button-add-favorites',
+    );
+    // console.log(buttonAddFavoritesEl);
+    // console.log(localStorage.length);
+    const arrKeysStorage = [];
+    for (let i = 0; i < localStorage.length; i++) {
+      arrKeysStorage.push(localStorage.key(i));
+    }
+    // console.log(arrKeysStorage);
+
+    // const localData = JSON.parse(localStorage.getItem('favorite'));
+    // console.log(localData);
+
+    buttonAddFavoritesEl.addEventListener('click', () => {
+      const settings = {
+        name: response.data.name,
+        bodyPart: response.data.bodyPart,
+        calories: response.data.burnedCalories,
+        target: response.data.target,
+      };
+      // console.log(settings);
+      if (arrKeysStorage.includes(idExercise)) {
+        alert('This exercise already is in a favourite');
+      } else {
+        localStorage.setItem(idExercise, JSON.stringify(settings));
+      }
+    });
   } catch (error) {
     alert(error.message);
   }
