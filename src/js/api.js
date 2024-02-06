@@ -1,16 +1,6 @@
 import axios from 'axios';
 import { createMarkupExercises } from './markup';
 import { createMarkupExercisesSecond } from './markup';
-// import { createMarkupExercisesId } from './markup';
-// import icons from '../img/symbol-defs.svg';
-
-// export let choiceFilter = 'filter=Muscles';
-// import { handleClick } from './home';
-
-//import { choiceFilter } from './home';
-
-// let currentPage = 1;
-// let choiceFilter = 'filter=Muscles';
 
 ///////////////////////home.js
 let response = '';
@@ -21,6 +11,7 @@ let amountPageSecond = 1;
 let nameQuery = '';
 
 const btnFiltersEl = document.querySelector('.js-exercises-list-btn');
+
 const btnMusclesEl = document.querySelector(
   'button[data-action="filter=Muscles"]',
 );
@@ -33,9 +24,9 @@ const btnEquipmentEl = document.querySelector(
 const exercisesTitleEl = document.querySelector('.js-exercises-title');
 const exercisesTextEl = document.querySelector('.js-exercises-text');
 const listEl = document.querySelector('.js-exercises-list');
-// console.log('listEl', listEl);
 
 let filter = 'muscles';
+
 btnFiltersEl.addEventListener('click', onChangeFilter);
 
 function onChangeFilter(event) {
@@ -50,7 +41,7 @@ function onChangeFilter(event) {
   currentPage = 1;
   exercisesTitleEl.textContent = 'Exercises';
   exercisesTextEl.textContent = '';
-  // return choiceFilter, currentPage;
+
   getFilters(choiceFilter, currentPage);
 }
 //////////////////////
@@ -60,23 +51,34 @@ const amountPageSecondEl = document.querySelector(
   '.js-exercises-second-countpage',
 );
 
+// const favoriteListEl = document.querySelector('.js-favorite-list');
+// console.log(favoriteListEl);
+let query = '';
+
 getFilters();
 
-/////////////////////////////////////////////////////////
+////////////111111111111111111/////////////////////////////////////////////
 async function getFilters(choiceFilter = 'filter=Muscles', currentPage = 1) {
   axios.defaults.baseURL = 'https://energyflow.b.goit.study/api/';
+
   let resource = 'filters';
-  let params = {
-    page: currentPage,
-    limit: 8,
-  };
+  // let params = {
+  //   page: currentPage,
+  //   limit: 8,
+  // };
+
   listEl.removeEventListener('click', onClickBtnSecond);
   listEl.addEventListener('click', onClickExercises);
 
   currentPageSecond = 1;
   amountPageSecond = 1;
 
-  response = await axios.get(`${resource}?${choiceFilter}`, { params });
+  query = `${resource}?${choiceFilter}&page=${currentPage}&limit=8`;
+  // console.log(query);
+
+  // response = await axios.get(`${resource}?${choiceFilter}`, { params });
+  response = await axios.get(query);
+
   try {
     let amountPage = response.data.totalPages;
 
@@ -116,20 +118,20 @@ function onClickExercises(event) {
   getExercises();
 }
 
-////////////////////////////////////////////////////
+///////////////222222222/////////////////////////////////////
 ////////////////////////////////////////////////////
 async function getExercises() {
-  // axios.defaults.baseURL = 'https://energyflow.b.goit.study/api/';
+  axios.defaults.baseURL = 'https://energyflow.b.goit.study/api/';
+
   let resource = 'exercises';
   listEl.removeEventListener('click', onClickExercises);
 
-  const query = `${resource}?${filter}=${nameQuery}&page=${currentPageSecond}&limit=8`;
+  query = `${resource}?${filter}=${nameQuery}&page=${currentPageSecond}&limit=8`;
 
   response = await axios.get(query);
 
   try {
     amountPageSecond = response.data.totalPages;
-    console.log('amountPageSecond', amountPageSecond);
     amountPageEl.innerHTML = '';
     amountPageSecondEl.innerHTML = '';
     if (amountPageSecond > 1) {
@@ -162,25 +164,22 @@ function onClickBtnSecond(event) {
     return;
   }
 
-  console.log(idExercise);
-
   getExercisesID(idExercise);
 }
 
 ////////////////////////////////////
-///////////////////////////////////
+///////////333333333333333333////////////////////////
 ////////////////////////////////////////
 
 async function getExercisesID(idExercise) {
+  axios.defaults.baseURL = 'https://energyflow.b.goit.study/api/';
+
   let resource = 'exercises';
-  const query = `${resource}/${idExercise}`;
+  query = `${resource}/${idExercise}`;
   response = await axios.get(query);
 
   try {
-    console.dir(response.data);
-
     const modalImgEl = document.querySelector('.id-modal-img');
-    console.log(modalImgEl);
     modalImgEl.setAttribute('src', `${response.data.gifUrl}`);
     const modalTitleEl = document.querySelector('.id-modal-title');
     modalTitleEl.textContent = `${response.data.name}`;
@@ -250,11 +249,12 @@ async function getExercisesID(idExercise) {
         calories: response.data.burnedCalories,
         target: response.data.target,
       };
-      // console.log(settings);
+
       if (arrKeysStorage.includes(idExercise)) {
         alert('This exercise already is in a favourite');
       } else {
         localStorage.setItem(idExercise, JSON.stringify(settings));
+        alert('Exercise is successfully added to the favourite');
       }
     });
   } catch (error) {

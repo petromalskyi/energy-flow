@@ -1,51 +1,9 @@
-//import { createMarkupFavorites } from './markup';
 import icons from '../img/symbol-defs.svg';
 
 import { getQuote } from '../js/home';
 
 const favoriteListEl = document.querySelector('.js-favorite-list');
-// const quoteTextEl = document.querySelector('.quote-text');
-// const quoteAuthorEl = document.querySelector('.quote-author');
-
-///////////////////
-
-const quoteTextEl = document.querySelector('.quote-text');
-const quoteAuthorEl = document.querySelector('.quote-author');
-
-// export async function getQuote() {
-//   axios.defaults.baseURL = 'https://energyflow.b.goit.study/api/quote';
-
-//   const date = new Date();
-//   const currentDate =
-//     date.getFullYear() + String(date.getMonth()) + date.getDate();
-
-//   let objLocalStorage = {};
-//   if (localStorage.getItem('quotation')) {
-//     objLocalStorage = JSON.parse(localStorage.getItem('quotation'));
-//   }
-
-//   if (
-//     !localStorage.getItem('quotation') ||
-//     currentDate !== objLocalStorage.date
-//   ) {
-//     const response = await axios.get();
-//     try {
-//       quoteTextEl.textContent = response.data.quote;
-//       quoteAuthorEl.textContent = response.data.author;
-//       const settings = {
-//         date: currentDate,
-//         quote: response.data.quote,
-//         author: response.data.author,
-//       };
-//       localStorage.setItem('quotation', JSON.stringify(settings));
-//     } catch (error) {
-//       alert(error.message);
-//     }
-//   } else {
-//     quoteTextEl.textContent = objLocalStorage.quote;
-//     quoteAuthorEl.textContent = objLocalStorage.author;
-//   }
-// }
+//console.log(favoriteListEl);
 
 getQuote();
 
@@ -116,30 +74,27 @@ function createMarkupFavorites() {
       </li>`;
   }
 
-  favoriteListEl.innerHTML = markup;
+  // favoriteListEl.innerHTML = markup;
 }
 
-// const favoriteBtnEl = document.querySelector('.js-favorite-btn');
-// console.log(favoriteBtnEl);
-favoriteListEl.addEventListener('click', onFavoriteClick);
+////favoriteListEl.addEventListener('click', onFavoriteClick);
 
-function onFavoriteClick(event) {
-  console.dir(event.target.dataset.id);
-  if (!event.target.dataset.id) {
-    return;
-  }
-  // js-favorite-btn
-  console.log(event.target.className);
-  if (
-    event.target.className === 'js-favorite-btn' ||
-    event.target.dataset.action === 'delete'
-  ) {
-    const user = confirm(
-      'Are you sure that want to delete this exercise from a favourite?',
-    );
-    if (user) {
-      localStorage.removeItem(event.target.dataset.id);
-      createMarkupFavorites();
-    }
-  }
-}
+// function onFavoriteClick(event) {
+//   console.dir(event.target.dataset.id);
+//   if (!event.target.dataset.id) {
+//     return;
+//   }
+//   console.log(event.target.className);
+//   if (
+//     event.target.className === 'js-favorite-btn' ||
+//     event.target.dataset.action === 'delete'
+//   ) {
+//     const user = confirm(
+//       'Are you sure that want to delete this exercise from a favourite?',
+//     );
+//     if (user) {
+//       localStorage.removeItem(event.target.dataset.id);
+//       createMarkupFavorites();
+//     }
+//   }
+// }

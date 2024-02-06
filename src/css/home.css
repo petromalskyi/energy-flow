@@ -429,6 +429,7 @@
 
 /* МОДАЛЬНЕ ВІКНО ID  //////////////////////// */
 .js-backdrop-id {
+  width: 100%;
   position: fixed;
   z-index: 1;
   top: 50%;
@@ -445,16 +446,26 @@
   padding-bottom: 40px; */
   /* background-color: #f6f6f6; */
 }
+
 .id-modal-position {
-  /* position: relative; */
+  width: 100%;
+  position: relative;
   padding-top: 40px;
   padding-bottom: 40px;
   background-color: #f6f6f6;
 }
 
+.id-modal-icon {
+  fill: #000;
+}
+
 .js-id-modal-btn-close {
-  margin-bottom: 2px;
-  margin-left: 285px;
+  position: absolute;
+  top: 45px;
+  right: 30px;
+  z-index: 2;
+  /* margin-bottom: 2px;
+  margin-left: 240px; */
   display: inline-flex;
   align-items: center;
   padding: 0;
@@ -463,14 +474,8 @@
   cursor: pointer;
   color: #1b1b1b;
 }
-/* .id-modal-icon-close {
-  fill: #1b1b1b;
-} */
+
 .id-modal-img {
-  /* position: absolute;
-  top: 0;
-  left: 0; 
-   z-index: 1; */
   margin-bottom: 20px;
   border-radius: 12px;
   background-color: rgba(27, 27, 27, 0.2);
