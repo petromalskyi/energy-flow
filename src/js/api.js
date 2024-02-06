@@ -51,8 +51,6 @@ const amountPageSecondEl = document.querySelector(
   '.js-exercises-second-countpage',
 );
 
-// const favoriteListEl = document.querySelector('.js-favorite-list');
-// console.log(favoriteListEl);
 let query = '';
 
 getFilters();
@@ -74,7 +72,6 @@ async function getFilters(choiceFilter = 'filter=Muscles', currentPage = 1) {
   amountPageSecond = 1;
 
   query = `${resource}?${choiceFilter}&page=${currentPage}&limit=8`;
-  // console.log(query);
 
   // response = await axios.get(`${resource}?${choiceFilter}`, { params });
   response = await axios.get(query);
@@ -119,7 +116,6 @@ function onClickExercises(event) {
 }
 
 ///////////////222222222/////////////////////////////////////
-////////////////////////////////////////////////////
 async function getExercises() {
   axios.defaults.baseURL = 'https://energyflow.b.goit.study/api/';
 
@@ -167,10 +163,7 @@ function onClickBtnSecond(event) {
   getExercisesID(idExercise);
 }
 
-////////////////////////////////////
 ///////////333333333333333333////////////////////////
-////////////////////////////////////////
-
 async function getExercisesID(idExercise) {
   axios.defaults.baseURL = 'https://energyflow.b.goit.study/api/';
 
@@ -212,7 +205,6 @@ async function getExercisesID(idExercise) {
       const el = starsEl[i];
       starsEl[i].setAttribute('href', '/img/symbol-defs.svg#icon-star-passive');
     }
-    //  href = '/img/symbol-defs.svg#icon-star';
     const buttonOpenModalIdEl = document.querySelector('.js-second-btn');
     const backdropIdEl = document.querySelector('.js-backdrop-id');
     const buttonCloseModalIdEl = document.querySelector(
@@ -231,16 +223,11 @@ async function getExercisesID(idExercise) {
     const buttonAddFavoritesEl = document.querySelector(
       '.id-button-add-favorites',
     );
-    // console.log(buttonAddFavoritesEl);
-    // console.log(localStorage.length);
+
     const arrKeysStorage = [];
     for (let i = 0; i < localStorage.length; i++) {
       arrKeysStorage.push(localStorage.key(i));
     }
-    // console.log(arrKeysStorage);
-
-    // const localData = JSON.parse(localStorage.getItem('favorite'));
-    // console.log(localData);
 
     buttonAddFavoritesEl.addEventListener('click', () => {
       const settings = {
