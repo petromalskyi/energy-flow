@@ -436,7 +436,8 @@
   left: 50%;
   transform: translate(-50%, -50%);
   min-width: 335px;
-  min-height: 100vh;
+  /* min-height: 50vh; */
+  height: 100vh;
   transition: opacity 250ms ease, visibility 250ms ease;
   background-color: rgb(27, 27, 27, 0.6);
 }
@@ -530,7 +531,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 40px;
+  margin-top: 20px;
   margin-bottom: 10px;
   border: 1px solid #7e847f;
   border-radius: 30px;

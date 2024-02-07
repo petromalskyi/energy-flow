@@ -52,8 +52,46 @@ const amountPageSecondEl = document.querySelector(
 );
 
 let query = '';
+// let amountPageMarkup = '';
+// let results = [];
 
-getFilters();
+getFilters(choiceFilter, currentPage);
+
+// async function getQuery(query) {
+//   axios.defaults.baseURL = 'https://energyflow.b.goit.study/api/';
+
+//   response = await axios.get(query);
+//   try {
+//     let amountPage = response.data.totalPages;
+//     results = response.data.results;
+//     console.log(results);
+
+//     ////////////// Кількість сторінок
+//     amountPageEl.innerHTML = '';
+//     amountPageSecondEl.innerHTML = '';
+//     if (amountPage > 1) {
+//       amountPageMarkup = '';
+
+//       for (let i = 1; i <= amountPage; i += 1) {
+//         if (i === currentPage) {
+//           amountPageMarkup += `<button data-action=${i} class="js-exercises-countpage-btn active " type="button">${i}</button>`;
+//         } else {
+//           amountPageMarkup += `
+//           <button data-action=${i} class="js-exercises-countpage-btn " type="button">${i}</button>
+//         `;
+//         }
+//       }
+
+//       // amountPageEl.innerHTML = amountPageMarkup;
+
+//       // amountPageEl.addEventListener('click', onChangeActivePage);
+//     }
+
+//     //    createMarkupExercises(response.data.results);
+//   } catch (error) {
+//     alert(error.message);
+//   }
+// }
 
 ////////////111111111111111111/////////////////////////////////////////////
 async function getFilters(choiceFilter = 'filter=Muscles', currentPage = 1) {
@@ -73,7 +111,7 @@ async function getFilters(choiceFilter = 'filter=Muscles', currentPage = 1) {
 
   query = `${resource}?${choiceFilter}&page=${currentPage}&limit=8`;
 
-  // response = await axios.get(`${resource}?${choiceFilter}`, { params });
+  //// response = await axios.get(`${resource}?${choiceFilter}`, { params });
   response = await axios.get(query);
 
   try {
@@ -93,13 +131,11 @@ async function getFilters(choiceFilter = 'filter=Muscles', currentPage = 1) {
           <button data-action=${i} class="js-exercises-countpage-btn " type="button">${i}</button>
         `;
         }
+        amountPageEl.innerHTML = amountPageMarkup;
+
+        amountPageEl.addEventListener('click', onChangeActivePage);
       }
-
-      amountPageEl.innerHTML = amountPageMarkup;
-
-      amountPageEl.addEventListener('click', onChangeActivePage);
     }
-
     createMarkupExercises(response.data.results);
   } catch (error) {
     alert(error.message);
@@ -124,6 +160,16 @@ async function getExercises() {
 
   query = `${resource}?${filter}=${nameQuery}&page=${currentPageSecond}&limit=8`;
 
+  // getQuery(query);
+  // try {
+  //   amountPageSecondEl.innerHTML = amountPageMarkup;
+  //   amountPageSecondEl.addEventListener('click', onChangeActivePageSecond);
+
+  //   createMarkupExercisesSecond(results);
+  // } catch (error) {
+  //   alert(error.message);
+  // }
+
   response = await axios.get(query);
 
   try {
@@ -147,6 +193,7 @@ async function getExercises() {
     }
 
     createMarkupExercisesSecond(response.data.results);
+    // createMarkupExercisesSecond(results);
 
     listEl.addEventListener('click', onClickBtnSecond);
   } catch (error) {
