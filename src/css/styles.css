@@ -1,0 +1,19 @@
+@import url('./reset.css');
+
+@import url('./common.css');
+
+@import url('./header.css');
+
+@import url('./home.css');
+
+@import url('./footer.css');
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+ padding-top: 20px;
+ padding-bottom: 20px;
+  background-color: #F6F6F6;
+}
